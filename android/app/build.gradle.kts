@@ -24,6 +24,7 @@ android {
         applicationId = "com.example.my_project"
         // You can update the following values to match your application needs.
         // For more information, see: https://flutter.dev/to/review-gradle-config.
+        // Step 1: install icon app and check version sdk
         minSdk = flutter.minSdkVersion
         targetSdk = flutter.targetSdkVersion
         versionCode = flutter.versionCode
