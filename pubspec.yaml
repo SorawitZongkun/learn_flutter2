@@ -45,6 +45,10 @@ dev_dependencies:
   flutter_spinkit: ^5.2.1
   # ใช้คำสั่ง flutter pub get
 
+  # Step 3: check internet connect or not?
+  connectivity_plus: ^6.1.4
+  # ใช้คำสั่ง flutter clean and flutter pub get
+
 # Step 1: install icon app
 flutter_launcher_icons:
   android: "launcher_icon"

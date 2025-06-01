@@ -1,4 +1,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Step 3: check internet connect or not? -->
+    <uses-permission android:name="andoid.permission.INTERNET" /> <!-- Cellular -->
+    <uses-permission android:name="andoid.permission.ACCESS_NETWORK_STATE" /> <!-- Wifi -->
+
     <!-- Step 1: change name app at android:label -->
     <application
         android:label="Bro Coding"
