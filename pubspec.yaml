@@ -49,6 +49,9 @@ dev_dependencies:
   connectivity_plus: ^6.1.4
   # ใช้คำสั่ง flutter clean and flutter pub get
 
+  # Step 4: show alert with toast
+  fluttertoast: ^8.2.12
+
 # Step 1: install icon app
 flutter_launcher_icons:
   android: "launcher_icon"

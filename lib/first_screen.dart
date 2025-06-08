@@ -2,9 +2,12 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 import 'package:connectivity_plus/connectivity_plus.dart';
+
+import 'package:fluttertoast/fluttertoast.dart';
 
 class FirstScreen extends StatefulWidget {
   const FirstScreen({super.key});
@@ -21,15 +24,6 @@ class _FirstScreenState extends State<FirstScreen> {
 
     // Step 3: check internet connect or not?
     checkInternetConnection();
-
-    // เมื่อครบเวลาจะทำการกดปุ่มโดยอัตโนมัติ
-    Timer(
-      const Duration(seconds: 3),
-      () => Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => const SecondPage()),
-      ),
-    );
   }
 
   // Step 3: check internet connect or not?
@@ -39,31 +33,23 @@ class _FirstScreenState extends State<FirstScreen> {
     var connectivityResult = await (Connectivity().checkConnectivity());
 
     if (connectivityResult.contains(ConnectivityResult.mobile)) {
-      // Mobile network available.
-      print("Mobile network available.");
+      _showToast("Mobile network available.");
     } else if (connectivityResult.contains(ConnectivityResult.wifi)) {
-      // Wi-fi is available.
-      // Note for Android:
-      // When both mobile and Wi-Fi are turned on system will return Wi-Fi only as active network type
-      print("Wi-fi network available.");
+      _showToast("Wi-fi network available.");
     } else if (connectivityResult.contains(ConnectivityResult.ethernet)) {
-      // Ethernet connection available.
-      print("Ethernet (LAN) network available.");
+      _showToast("Ethernet (LAN) network available.");
     } else if (connectivityResult.contains(ConnectivityResult.vpn)) {
-      // Vpn connection active.
-      // Note for iOS and macOS:
-      // There is no separate network interface type for [vpn].
-      // It returns [other] on any device (also simulator)
-      print("Vpn connection active.");
+      _showToast("Vpn connection active.");
     } else if (connectivityResult.contains(ConnectivityResult.bluetooth)) {
-      // Bluetooth connection available.
-      print("Bluetooth connection active.");
+      _showToast("Bluetooth connection active.");
     } else if (connectivityResult.contains(ConnectivityResult.other)) {
-      // Connected to a network which is not in the above mentioned networks.
-      print("Other connection active.");
+      _showToast("Other connection active.");
     } else if (connectivityResult.contains(ConnectivityResult.none)) {
-      // No available network types
-      print("No available network.");
+      // _showToast("No available network.");
+      setState(() {
+        // setState เพื่อให้ทำงานทันที
+        _showAlertDialog(context, "Error", "No available network.");
+      });
     }
   }
 
@@ -75,9 +61,6 @@ class _FirstScreenState extends State<FirstScreen> {
           colors: [Colors.orange, Colors.pink],
           begin: FractionalOffset(0.0, 0.0),
           end: FractionalOffset(0.6, 0.5),
-          // tileMode: TileMode.clamp,
-          // tileMode: TileMode.decal,
-          // tileMode: TileMode.mirror,
           tileMode: TileMode.repeated,
         ),
       ),
@@ -90,6 +73,74 @@ class _FirstScreenState extends State<FirstScreen> {
           const SpinKitSpinningLines(color: Colors.orange),
         ],
       ),
+    );
+  }
+
+  // Step 4: show alert with toast
+  // เมื่อเขียน code เสร็จแล้ว ให้แสดงการเปิด/ปิด internet wifi กับ 5G โดยลากจากด้านบนมือถือ
+  void _showToast(String msg) {
+    Fluttertoast.showToast(
+      msg: msg,
+      toastLength: Toast.LENGTH_SHORT,
+      gravity: ToastGravity.BOTTOM,
+      timeInSecForIosWeb: 1,
+      backgroundColor: Colors.orange,
+      textColor: Colors.white,
+      fontSize: 12.0,
+    );
+    _timer();
+  }
+
+  // Step 4: show alert with toast
+  void _timer() {
+    // เมื่อครบเวลาจะทำการกดปุ่มโดยอัตโนมัติ
+    Timer(
+      const Duration(seconds: 3),
+      () => Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => const SecondPage()),
+      ),
+    );
+  }
+
+  // Step 4: show alert with toast
+  void _showAlertDialog(BuildContext context, String title, String msg) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text(
+            title,
+            style: const TextStyle(
+              fontSize: 20,
+              color: Colors.red,
+              fontFamily: "Alike",
+              fontWeight: FontWeight.w500,
+            ),
+          ),
+          content: Text(msg),
+          // SystemNavigator.pop คือ ถอยหลังกลับไป 1 ก้าว
+          actions: <Widget>[
+            ElevatedButton(
+              style: ButtonStyle(
+                backgroundColor: WidgetStateProperty.all<Color>(
+                  Colors.orangeAccent,
+                ),
+              ),
+              onPressed: () => SystemNavigator.pop(),
+              child: const Text(
+                "OK",
+                style: TextStyle(
+                  fontSize: 16,
+                  color: Colors.amberAccent,
+                  fontFamily: "Alike",
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+            ),
+          ],
+        );
+      },
     );
   }
 }
