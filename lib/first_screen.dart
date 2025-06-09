@@ -9,6 +9,8 @@ import 'package:connectivity_plus/connectivity_plus.dart';
 
 import 'package:fluttertoast/fluttertoast.dart';
 
+import 'package:my_project/main_menu.dart';
+
 class FirstScreen extends StatefulWidget {
   const FirstScreen({super.key});
 
@@ -98,7 +100,7 @@ class _FirstScreenState extends State<FirstScreen> {
       const Duration(seconds: 3),
       () => Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => const SecondPage()),
+        MaterialPageRoute(builder: (context) => const Main_Menu()),
       ),
     );
   }
@@ -141,28 +143,6 @@ class _FirstScreenState extends State<FirstScreen> {
           ],
         );
       },
-    );
-  }
-}
-
-class SecondPage extends StatelessWidget {
-  const SecondPage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text("Second Page")),
-      body: const Center(
-        child: Text(
-          'This is the second page.',
-          style: TextStyle(
-            fontSize: 20,
-            color: Colors.amberAccent,
-            fontFamily: "ALike",
-            fontWeight: FontWeight.w500,
-          ),
-        ),
-      ),
     );
   }
 }
