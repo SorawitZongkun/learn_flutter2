@@ -5,6 +5,12 @@ import 'package:crystal_navigation_bar/crystal_navigation_bar.dart';
 
 import 'package:iconly/iconly.dart';
 
+// Step 6: create app bar (menubar)
+import 'package:my_project/components/home/home.dart';
+import 'package:my_project/components/doc/doc.dart';
+import 'package:my_project/components/map/map.dart';
+import 'package:my_project/components/video/video.dart';
+
 class Main_Menu extends StatefulWidget {
   const Main_Menu({super.key});
 
@@ -16,12 +22,7 @@ class _Main_MenuState extends State<Main_Menu> {
   var _selectedIdex = 0; // หน้าเริ่มต้น
 
   // สร้างทั้งหมด 4 หน้า
-  final List<Widget> _pages = [
-    const Center(child: Text("Home Page", style: TextStyle(fontSize: 24))),
-    const Center(child: Text("Category Page", style: TextStyle(fontSize: 24))),
-    const Center(child: Text("Work Page", style: TextStyle(fontSize: 24))),
-    const Center(child: Text("Map Page", style: TextStyle(fontSize: 24))),
-  ];
+  final List<Widget> _pages = [Home(), Doc(), Map(), Video()];
 
   void _onItemTapped(int index) {
     setState(() {
@@ -45,16 +46,16 @@ class _Main_MenuState extends State<Main_Menu> {
           ),
           // index = 1;
           CrystalNavigationBarItem(
-            icon: IconlyBold.category,
+            icon: IconlyBold.document,
             selectedColor: Colors.white,
-            unselectedIcon: IconlyLight.category,
+            unselectedIcon: IconlyLight.document,
             unselectedColor: Colors.black38,
           ),
           // index = 2;
           CrystalNavigationBarItem(
-            icon: IconlyBold.work,
+            icon: IconlyBold.video,
             selectedColor: Colors.white,
-            unselectedIcon: IconlyLight.work,
+            unselectedIcon: IconlyLight.video,
             unselectedColor: Colors.black38,
           ),
           // index = 3;

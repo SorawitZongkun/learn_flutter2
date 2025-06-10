@@ -10,6 +10,11 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(home: FirstScreen());
+    return const MaterialApp(
+      // Step 6: create app bar (menubar)
+      debugShowCheckedModeBanner: false, // ปิด tag debug
+
+      home: FirstScreen(),
+    );
   }
 }
