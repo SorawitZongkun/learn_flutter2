@@ -56,7 +56,8 @@ class Doc extends StatelessWidget {
             ListTile(
               title: const Text("ออกจากระบบ"),
               onTap: () {
-                exit(0); // ออกจากแอปพลิเคชัน
+                // Step 8: create a app exit popup
+                _exitAlertDialog(context); // ปิดแอพ
               },
               leading: const Icon(IconlyBold.logout),
               trailing: const Icon(IconlyLight.arrow_right_circle),
@@ -95,11 +96,88 @@ class Doc extends StatelessWidget {
       backgroundColor: Colors.orange,
       actions: [
         IconButton(
-          onPressed: () => (),
+          // Step 8: create a app exit popup
+          onPressed: () => _exitAlertDialog(context), // ปิดแอพ
           icon: const Icon(IconlyBold.logout),
           color: Colors.white,
         ),
       ],
+    );
+  }
+
+  // Step 8: create a app exit popup
+  void _exitAlertDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text(
+            "ออกจากแอปพลิเคชัน",
+            style: TextStyle(
+              fontSize: 20,
+              color: Colors.red,
+              fontFamily: "Alike",
+              fontWeight: FontWeight.w500,
+            ),
+          ),
+          content: const Text(
+            "คุณต้องการออกจากแอปพลิเคชันหรือไม่?",
+            style: TextStyle(
+              fontSize: 16,
+              color: Colors.black,
+              fontFamily: "Alike",
+              fontWeight: FontWeight.w500,
+            ),
+          ),
+          actions: <Widget>[
+            Row(
+              children: [
+                ElevatedButton(
+                  style: ButtonStyle(
+                    backgroundColor: WidgetStatePropertyAll(
+                      Colors.red.shade800,
+                    ),
+                  ),
+                  onPressed:
+                      () => Navigator.pop(
+                        context,
+                        true,
+                      ), // ปิด dialog ย้อนกลับไป 1 step
+                  child: const Text(
+                    "ยกเลิก",
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontFamily: "Alike",
+                      fontWeight: FontWeight.w500,
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+                const SizedBox(width: 10), // ช่องว่างระหว่างปุ่ม
+                ElevatedButton(
+                  style: ButtonStyle(
+                    backgroundColor: WidgetStatePropertyAll(
+                      Colors.green.shade800,
+                    ),
+                  ),
+                  onPressed: () {
+                    exit(0); // ออกจากแอปพลิเคชัน
+                  },
+                  child: const Text(
+                    "ออกจากระบบ",
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontFamily: "Alike",
+                      fontWeight: FontWeight.w500,
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ],
+        );
+      },
     );
   }
 }
