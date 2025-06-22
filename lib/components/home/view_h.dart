@@ -2,6 +2,10 @@
 import 'package:flutter/material.dart';
 import 'package:iconly/iconly.dart';
 
+// Step 11: Create a Route Page And Navigation App
+import 'package:my_project/components/constants/string_web.dart';
+import 'package:my_project/components/web_view/web_view.dart';
+
 class View_H extends StatefulWidget {
   const View_H({super.key});
 
@@ -29,28 +33,213 @@ class _View_HState extends State<View_H> {
           crossAxisSpacing: 8, // ระยะห่างระหว่างคอลัมน์
           mainAxisSpacing: 8, // ระยะห่างระหว่างแถว
           children: [
-            _buildColoredBox(Colors.red, "กล่องที่ 1"),
-            _buildColoredBox(Colors.blue, "กล่องที่ 2"),
-            _buildColoredBox(Colors.yellow, "กล่องที่ 3"),
-            _buildColoredBox(Colors.green, "กล่องที่ 4"),
-            _buildColoredBox(Colors.pink, "กล่องที่ 5"),
-            _buildColoredBox(Colors.black, "กล่องที่ 6"),
+            // Step 11: Create a Route Page And Navigation App
+            GestureDetector(
+              onTap:
+                  () => {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder:
+                            (context) => Web_View(web: Strings.web_flutter),
+                      ),
+                    ),
+                  },
+              child: Container(
+                margin: const EdgeInsets.all(8),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    const SizedBox(height: 20),
+                    Image.asset(
+                      './android/assets/image/img1.png',
+                      width: 100,
+                      height: 100,
+                    ),
+                    const SizedBox(height: 20),
+                    const Text(
+                      "Flutter",
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w500,
+                        color: Colors.blueAccent,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            GestureDetector(
+              onTap:
+                  () => {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => Web_View(web: Strings.web_lib),
+                      ),
+                    ),
+                  },
+              child: Container(
+                margin: const EdgeInsets.all(8),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    const SizedBox(height: 20),
+                    Image.asset(
+                      './android/assets/image/img2.png',
+                      width: 100,
+                      height: 100,
+                    ),
+                    const SizedBox(height: 20),
+                    const Text(
+                      "Pub",
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w500,
+                        color: Colors.lightBlue,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            GestureDetector(
+              onTap:
+                  () => {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => Web_View(web: Strings.youtube),
+                      ),
+                    ),
+                  },
+              child: Container(
+                margin: const EdgeInsets.all(8),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    const SizedBox(height: 20),
+                    Image.asset(
+                      './android/assets/image/img3.png',
+                      width: 100,
+                      height: 100,
+                    ),
+                    const SizedBox(height: 20),
+                    const Text(
+                      "Youtube",
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w500,
+                        color: Colors.red,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            GestureDetector(
+              onTap:
+                  () => {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => Web_View(web: Strings.facebook),
+                      ),
+                    ),
+                  },
+              child: Container(
+                margin: const EdgeInsets.all(8),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    const SizedBox(height: 20),
+                    Image.asset(
+                      './android/assets/image/img4.png',
+                      width: 100,
+                      height: 100,
+                    ),
+                    const SizedBox(height: 20),
+                    Text(
+                      "Facebook",
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w500,
+                        color: Colors.blue.shade400,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            GestureDetector(
+              onTap:
+                  () => {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => Web_View(web: Strings.tiktok),
+                      ),
+                    ),
+                  },
+              child: Container(
+                margin: const EdgeInsets.all(8),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    const SizedBox(height: 20),
+                    Image.asset(
+                      './android/assets/image/img5.png',
+                      width: 100,
+                      height: 100,
+                    ),
+                    const SizedBox(height: 20),
+                    const Text(
+                      "Tiktok",
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w500,
+                        color: Colors.black,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            GestureDetector(
+              onTap:
+                  () => {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => Web_View(web: Strings.line),
+                      ),
+                    ),
+                  },
+              child: Container(
+                margin: const EdgeInsets.all(8),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    const SizedBox(height: 20),
+                    Image.asset(
+                      './android/assets/image/img6.png',
+                      width: 100,
+                      height: 100,
+                    ),
+                    const SizedBox(height: 20),
+                    const Text(
+                      "Line",
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w500,
+                        color: Colors.green,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
           ],
-        ),
-      ),
-    );
-  }
-
-  Widget _buildColoredBox(Color color, String text) {
-    return Container(
-      decoration: BoxDecoration(
-        color: color,
-        borderRadius: BorderRadius.circular(8), // มุมโค้งมน
-      ),
-      child: Center(
-        child: Text(
-          text,
-          style: const TextStyle(color: Colors.white, fontSize: 16),
         ),
       ),
     );

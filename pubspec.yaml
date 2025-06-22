@@ -89,6 +89,16 @@ flutter:
   assets:
     - ./android/assets/image/ # show all
     - ./android/assets/image/app_screen.png
+    # Step 11: Create a Route Page And Navigation App
+    - ./android/assets/image/img1.png
+    - ./android/assets/image/img2.png
+    - ./android/assets/image/img3.png
+    - ./android/assets/image/img4.png
+    - ./android/assets/image/img5.png
+    - ./android/assets/image/img6.png
+    - ./android/assets/image/img7.png
+
+
 
 
   # To add assets to your application, add an assets section, like this:
