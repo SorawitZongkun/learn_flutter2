@@ -1,2 +1,11 @@
+// Step 12: install cloud firestore
+install firebase CLI
+npm install -g firebase-tools
+firebase login
+firebase --version
+flutter pub global activate flutterfire_cli
+flutterfire configure (use on powershell)
+flutterfire configure
+
 https://www.youtube.com/watch?v=ramk-Isayso
-4:07:21
+(06:28:42) 18 เชื่อมต่อรับค่า API บนแอปใน Flutter (Get API on app in Flutter)
