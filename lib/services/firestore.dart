@@ -1,5 +1,5 @@
 // Step 14: make a service for firestore
-import 'dart:ffi';
+// import 'dart:ffi'; // Not needed for Dart's built-in int type
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 
@@ -10,7 +10,7 @@ class FirestoreService {
   );
 
   // Create
-  Future<void> addPerson(String personName, Int personAge, String personEmail) {
+  Future<void> addPerson(String personName, int personAge, String personEmail) {
     return persons.add({
       'personName': personName,
       'personAge': personAge,
@@ -26,11 +26,22 @@ class FirestoreService {
     return personsStream;
   }
 
+  // Step 15: make a CRUD function
+  // Get a person by ID
+  Future<Map<String, dynamic>> getPersonById(String personID) async {
+    final doc =
+        await FirebaseFirestore.instance
+            .collection('persons')
+            .doc(personID)
+            .get();
+    return doc.data() ?? {};
+  }
+
   // Update
   Future<void> updatePerson(
     String personID,
     String personName,
-    Int personAge,
+    int personAge,
     String personEmail,
   ) {
     return persons.doc(personID).update({
